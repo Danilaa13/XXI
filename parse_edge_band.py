@@ -78,17 +78,12 @@ def parse_edge_band(title):
     name = name.rstrip(',')
 
     return {
-        "Артикул материала": f"{material} {group} {thickness} мм {structure} {code}",
-        "Наименование материала": f"{material} {group} {thickness} мм {name} {structure} {code}",
-        "Наименование группы": f"{group}/{material}/{thickness} мм",
+        "Артикул материала": f"{structure} {code}",
+        "Наименование материала": f"{name} {code} {structure} {width}*{thickness} {group}",
+        "Наименование группы": f"KRONOSPAN/0x{width}/{thickness} мм",
         "Единица измерения": units_of_measurement,
-        "Ширина": width,
         "Длина": '',
+        "Ширина": width,
         "Толщина": thickness,
-        "Обозначение": f"{material} {group} {thickness} мм {structure} {code}",
+        "Обозначение": f"{material} {group} {thickness}мм {code} {structure} ",
     }
-
-# Тестируем на примере
-# title = "Кромка ПВХ 1,0*19 мм Черный Графит 0961-Н01 EG, Galoplast"
-# parsed_data = parse_edge_band(title)
-# print(parsed_data)

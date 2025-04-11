@@ -47,16 +47,13 @@ def parse_ldsp(title):
     name = re.sub(r'\(\s*\)', '', name).strip()  # Убираем пустые скобки
 
     return {
-        "Артикул материала": f"{material} {group} {thickness} мм {structure} {code}",
-        "Наименование материала": f"{material} {group} {thickness} мм {name} {structure} {code}",
-        "Наименование группы": f"{group}/{thickness} мм",
+        "Артикул материала": f"{structure} {code}",
+        "Наименование материала": f"{name} {code} {structure} {length}*{width}*{thickness} {group}",
+        "Наименование группы": f"KRONOSPAN/{length}x{width}/{thickness} мм",
         "Единица измерения": units_of_measurement,
-        "Ширина": width,
         "Длина": length,
+        "Ширина": width,
         "Толщина": thickness,
-        "Обозначение": f"{material} {group} {thickness} мм {structure} {code}",
+        "Обозначение": f"ЛДСП {group} {thickness}мм {code} {structure} ",
     }
 
-# Тестируем на примере
-# title = "Орех Экко 9459 PR 2800*2070*10 мм SPAN (7гр)"
-# print(parse_ldsp(title))

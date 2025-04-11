@@ -64,14 +64,14 @@ def parse_hdf(title):
     name = re.sub(r'\bК\b|\bмм\b', '', name).strip()  # Убираем "К" и "мм"
 
     return {
-        "Артикул материала": f"{material} {group} {thickness} мм {structure} {code}",
-        "Наименование материала": f"{material} {group} {thickness} мм {name} {structure} {code}",
-        "Наименование группы": f"{group}/{material}/{thickness} мм",
+        "Артикул материала": f"{structure} {code}",
+        "Наименование материала": f"{name} {code} {structure} {length}*{width}*{thickness} {group}",
+        "Наименование группы": f"KRONOSPAN/{length}x{width}/{thickness} мм",
         "Единица измерения": units_of_measurement,
-        "Ширина": width,
         "Длина": length,
+        "Ширина": width,
         "Толщина": thickness,
-        "Обозначение": f"{material} {group} {thickness} мм {structure} {code}",
+        "Обозначение": f"{material} {group} {thickness}мм {code} {structure} ",
     }
 
 
