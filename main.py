@@ -7,7 +7,7 @@ with open('products_new.json', 'r', encoding='utf-8') as file:
 
 data = data[~((data['Ширина'] == 1830) & (data['Длина'] == 2500))]
 data = data[~data.apply(lambda row: row.astype(str).str.contains('PVC', case=False).any(), axis=1)]
-data = data[data['Наименование группы'].str.contains('GP|Galoplast|SPAN', case=False, na=False)]
+data = data[data['Наименование материала'].str.contains('GP|Galoplast|SPAN', case=False, na=False)]
 
 
 # Получаем список столбцов
