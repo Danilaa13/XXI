@@ -7,7 +7,7 @@ def parse_lmdf(title):
 
     # Регулярные выражения для извлечения данных
     size_pattern = re.compile(r'(\d+)\*(\d+)\*(\d+)')  # Размеры (длина*ширина*толщина)
-    code_pattern = re.compile(r'\b\d{3}\b')  # Код из 3 цифр
+    code_pattern = re.compile(r'\b\d{3,4}\b')  # Код из 3 цифр
     structure_pattern = re.compile(r'\b([A-ZА-Я]{1,2})\b')  # Структура из 2 латинских букв
     group_pattern = re.compile(r'\b(SPAN|KST|Алтайлес|GP)\b')  # Группа заглавными латинскими буквами
 
@@ -51,9 +51,9 @@ def parse_lmdf(title):
     name = re.sub(r'\s+', ' ', name).strip()  # Убираем лишние пробелы
 
     return {
-        "Артикул материала": f"{structure} {code}",
+        "Артикул материала": f"{code} {structure}",
         "Наименование материала": f"{name} {code} {structure} {length}*{width}*{thickness} {group}",
-        "Наименование группы": f"KRONOSPAN/{length}x{width}/{thickness} мм",
+        "Наименование группы": f"KRONOSPAN/ЛМДФ/{length}x{width}/{thickness} мм",
         "Единица измерения": units_of_measurement,
         "Длина": length,
         "Ширина": width,
@@ -61,9 +61,4 @@ def parse_lmdf(title):
         "Обозначение": f"{material} {group} {thickness}мм {code} {structure} ",
     }
 
-
-# Пример использования
-# title = "ЛМДФ 101 SM Белый (XL) 2800*2070*16 односторонний SPAN"
-# parsed_data = parse_lmdf(title)
-# print(parsed_data)
 

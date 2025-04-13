@@ -47,9 +47,9 @@ def parse_ldsp(title):
     name = re.sub(r'\(\s*\)', '', name).strip()  # Убираем пустые скобки
 
     return {
-        "Артикул материала": f"{structure} {code}",
+        "Артикул материала": f"{code} {structure}",
         "Наименование материала": f"{name} {code} {structure} {length}*{width}*{thickness} {group}",
-        "Наименование группы": f"KRONOSPAN/{length}x{width}/{thickness} мм",
+        "Наименование группы": f"KRONOSPAN/ЛДСП/{length}x{width}/{thickness} мм",
         "Единица измерения": units_of_measurement,
         "Длина": length,
         "Ширина": width,

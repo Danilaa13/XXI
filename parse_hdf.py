@@ -64,9 +64,9 @@ def parse_hdf(title):
     name = re.sub(r'\bК\b|\bмм\b', '', name).strip()  # Убираем "К" и "мм"
 
     return {
-        "Артикул материала": f"{structure} {code}",
+        "Артикул материала": f"{code} {structure}",
         "Наименование материала": f"{name} {code} {structure} {length}*{width}*{thickness} {group}",
-        "Наименование группы": f"KRONOSPAN/{length}x{width}/{thickness} мм",
+        "Наименование группы": f"KRONOSPAN/ХДФ/{length}x{width}/{thickness} мм",
         "Единица измерения": units_of_measurement,
         "Длина": length,
         "Ширина": width,
@@ -74,8 +74,3 @@ def parse_hdf(title):
         "Обозначение": f"{material} {group} {thickness}мм {code} {structure} ",
     }
 
-
-# Пример использования
-# title = "ХДФ Дуб Крафт Белый К001 PE 2800*2070*3 мм SPAN"
-# parsed_data = parse_hdf(title)
-# print(parsed_data)

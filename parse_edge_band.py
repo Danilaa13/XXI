@@ -78,9 +78,9 @@ def parse_edge_band(title):
     name = name.rstrip(',')
 
     return {
-        "Артикул материала": f"{structure} {code}",
+        "Артикул материала": f"{code} {structure}",
         "Наименование материала": f"{name} {code} {structure} {width}*{thickness} {group}",
-        "Наименование группы": f"KRONOSPAN/0x{width}/{thickness} мм",
+        "Наименование группы": f"KRONOSPAN/Кромка/{group}/{thickness}x{width}",
         "Единица измерения": units_of_measurement,
         "Длина": '',
         "Ширина": width,
